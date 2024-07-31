@@ -4,6 +4,7 @@ init:
 default: build-repo
 
 # build the project
+
 build-repo:
 	./hack/build.sh repo
 
@@ -27,6 +28,9 @@ install-galera4: build-galera4
 
 install-repoall: build-repoall
 	./hack/install.sh repoall
+
+install-repostore:
+	./hack/install.sh repostore
 
 install-reposerver:
 	./hack/install.sh reposerver

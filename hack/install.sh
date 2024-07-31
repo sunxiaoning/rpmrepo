@@ -17,6 +17,8 @@ ARCH=${ARCH:-"x86_64"}
 
 SERVER_NAME=${SERVER_NAME:-"localhost"}
 
+RPMSYNC_MODULE=rpmsync
+
 install-repo() {
   install -D -m 644 "repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo" "/etc/yum.repos.d/${APP_NAME}-${APP_VERSION}.repo" 
 }
@@ -48,6 +50,11 @@ install-repoall() {
   install-galera4
 }
 
+install-repostore() {
+  cd "${RPMSYNC_MODULE}"
+  make install-repoall
+}
+
 install-reposerver() {
   rpm -ivh "${REPO_ROOT_PATH}/nginx/${NGINX_VERSION}/nginx-${NGINX_VERSION}-${RELEASE}.${DIST}.${ARCH}.rpm"
   rm -f /etc/nginx/conf.d/*.conf
@@ -76,6 +83,9 @@ main() {
     repoall)
       install-repoall-docker
       ;;
+    repostore)
+      install-repostore-docker
+      ;;
     reposerver)
       install-reposerver-docker
       ;;
@@ -100,6 +110,9 @@ main() {
       ;;
     repoall)
       install-repoall
+      ;;
+    repostore)
+      install-repostore
       ;;
     reposerver)
       install-reposerver
