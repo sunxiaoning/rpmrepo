@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -x
 set -o nounset
 set -o errexit
 set -o pipefail
@@ -6,8 +7,15 @@ set -o pipefail
 USE_DOCKER=${USE_DOCKER:-"0"}
 
 start-reposerver() {
+  if systemctl is-active --quiet nginx; then
+    return 0
+  fi
   setsenginx
   systemctl start nginx
+  if ! systemctl is-active --quiet nginx; then
+    echo "Nginx is not running!"
+    exit 1
+  fi
 }
 
 setsenginx() {
@@ -16,7 +24,7 @@ setsenginx() {
 
 setsehttpd_t() {
   if semanage permissive -l | grep -q httpd_t; then
-    exit 0
+    return 0
   fi
   echo "Adding httpd_t to permissive mode."
   semanage permissive -a httpd_t
@@ -28,7 +36,19 @@ reload-reposerver() {
 
 
 stop-reposerver() {
+  local service_status=$(systemctl is-active nginx 2>/dev/null || true)
+  if [[ "${service_status}" == "inactive" ]] || [[ "${service_status}" == "dead" ]]; then
+    return 0
+  fi
+
   systemctl stop nginx
+
+  service_status=$(systemctl is-active nginx 2>/dev/null || true)
+  if [[ "${service_status}" == "inactive" ]] || [[ "${service_status}" == "dead" ]]; then
+    return 0
+  fi
+  echo "Error: Service nginx is not stopped properly. Current status: ${service_status}."
+  exit 1
 }
 
 
