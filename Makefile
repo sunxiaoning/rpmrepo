@@ -43,7 +43,7 @@ start-reposerver:
 
 run-reposerver: install-reposerver install-repoconf start-reposerver
 
-autorun-reposerver: install-repostore run-server
+autorun-reposerver: install-repostore run-reposerver
 
 reload-reposerver:
 	./hack/run.sh reload
