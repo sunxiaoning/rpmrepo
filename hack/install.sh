@@ -67,9 +67,9 @@ install-reposerver() {
   if [[ "1" == "${STOPNG_ONINSTALL}" ]]; then
     hack/run.sh stop
   else
-    local service_status=$(systemctl is-active nginx)
+    local service_status=$(systemctl is-active nginx 2>/dev/null || true)
     if [[ "${service_status}" != "inactive" ]] && [[ "${service_status}" != "dead" ]]; then
-      echo "nginx has not been shutdown completed!"
+      echo "Service nginx has not been shutdown completed!"
       exit 1
     fi
   fi
