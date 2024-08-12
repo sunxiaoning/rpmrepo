@@ -8,7 +8,7 @@ USE_DOCKER=${USE_DOCKER:-"0"}
 APP_NAME=nginx
 APP_VERSION=1.26.1
 
-export REPO_ROOT_PATH=${SERVER_NAME:-"/opt/rpmrepo"}
+export REPO_ROOT_PATH=${REPO_ROOT_PATH:-"/opt/rpmrepo"}
 
 NGINX_VERSION=1.26.1
 RELEASE=2
