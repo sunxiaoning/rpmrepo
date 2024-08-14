@@ -18,6 +18,8 @@ ARCH=${ARCH:-"x86_64"}
 export SERVER_NAME=${SERVER_NAME:-"localhost"}
 
 RPMSYNC_MODULE=rpmsync
+# export GH_TOKEN=${GH_TOKEN:-""}
+# export GH_TOKEN_FILE=${GH_TOKEN_FILE:-".gh_token.txt"}
 
 export NGCONF_DATADIR=/etc/nginx/conf.d/*.conf
 
