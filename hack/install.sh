@@ -23,7 +23,6 @@ RPMSYNC_MODULE=rpmsync
 
 export NGCONF_DATADIR=/etc/nginx/conf.d/*.conf
 
-export CLEAN_NGDATA_ONINSTALL=${CLEAN_NGDATA_ONINSTALL:-"0"}
 export STOPNG_ONINSTALL=${STOPNG_ONINSTALL:-"0"}
 
 PROJECT_PATH=$(pwd)
@@ -74,11 +73,6 @@ install-reposerver() {
       echo "Service nginx has not been shutdown completed!"
       exit 1
     fi
-  fi
-
-  if [[ "1" == "${CLEAN_NGDATA_ONINSTALL}" ]]; then
-    echo "Clean old ngconf datadir ..."
-    rm -rf ${NGCONF_DATADIR}
   fi
 
   if rpm -q "nginx" &> /dev/null; then
