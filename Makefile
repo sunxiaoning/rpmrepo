@@ -35,6 +35,9 @@ local-install: install-repostore install
 install-reposerver:
 	./hack/install.sh reposerver
 
+uninstall-reposerver:
+	./hack/uninstall.sh reposerver
+
 install-repoconf:
 	./hack/install.sh repoconf
 
