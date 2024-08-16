@@ -30,7 +30,7 @@ build-repo() {
       APP_REPO_URL=${LOCAL_CACHE_PATH}/${APP_NAME}/${APP_VERSION}
     fi
     mkdir -p repo/${APP_NAME}
-    hack/render.sh "repo/repo.repo.tmpl" "repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo"
+    bashutils/render.sh "repo/repo.repo.tmpl" "repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo"
 }
 
 build-nginx() {
