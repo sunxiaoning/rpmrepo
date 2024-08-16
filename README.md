@@ -4,42 +4,52 @@ private rpm repo
 ## quick install
 
 1. install all repo
-
-```bash
-make install-repoall
-
-```
-2. (option) install,config and op reposerver
+    
     ```bash
-    # install reposerver
-    make install-reposerver
+    # method1: when use local repo source
+    make install-repoall
 
-    # config reposerver
-    make install-repoconf
-
-    # start reposerver
-    make start-reposerver
-
-    # reload reposerver
-    make reload-reposerver
-
-    # stop reposerver
-    make stop repo-server
+    # method2: when use server repo source
+    USE_REPO_SERVER=1 SERVER_NAME=<repo_server> make install-repoall
     ```
-3. install app
-   ```bash
-   yum install <app_name>
-   ```
 
-## install app
+2. (optional) install repo store && install all repo without reposerver
+    
+    ```bash
+    make local-install
+    ```
 
-1. install repo
+3. (optional) install repo store, install reposerver && install all repo with local reposerver
+
+    ```bash
+    make server-install
+    ```
+
+## install app repo
+
+1. install galera4 cluster repo
+    
+    ```bash
+    # method1: when use local repo source
+    make install-repogalera4
+
+    # method2: when use server repo source
+    USE_REPO_SERVER=1 SERVER_NAME=<repo_server> make install-repogalera4
+    ```
+
+2. install nginx repo
+     ```bash
+    # method1: when use local repo source
+    make install-reponginx
+
+    # method2: when use server repo source
+    USE_REPO_SERVER=1 SERVER_NAME=<repo_server> make install-reponginx
+    ```
+
+
+3.  install generic repo
+    
     ```bash
     APP_NAME=<app_name> APP_VERSION=<app_version> make install-repo
     ```
-2. (option) install,config and op reposerver,see quick install...
 
-3. install app
-   ```bash
-   yum install <app_name>
-   ```
