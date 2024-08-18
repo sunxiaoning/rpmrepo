@@ -1,7 +1,7 @@
-[private-{{APP_NAME}}-{{APP_VERSION}}]
-name=private-{{APP_NAME}}-{{APP_VERSION}} Repository
+[{{REPO_SOURCE_MARKER}}-{{APP_NAME}}-{{APP_VERSION}}]
+name={{REPO_SOURCE_MARKER}}-{{APP_NAME}}-{{APP_VERSION}} Repository
 baseurl={{APP_REPO_URL}}
-enabled=1
-gpgcheck=0
-gpgkey=https://raw.githubusercontent.com/sunxiaoning/rpmbuild/main/william_signing.key
-module_hotfixes=true
+enabled={{REPO_ENABLED}}
+gpgcheck={{REPO_GPG_CHECK}}
+gpgkey={{REPO_GPG_KEY}}
+module_hotfixes={{REPO_MODULE_HOTFIXES}}
