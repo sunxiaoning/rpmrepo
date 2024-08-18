@@ -27,13 +27,16 @@ install-repogalera4: build-galera4
 
 install-repoall: install-reponginx install-repogalera4
 
+install: install-repoall
+
 install-repostore:
 	./hack/install.sh repostore
-
-local-install: install-repostore install-repoall
 
 install-reposerver:
 	./hack/install.sh reposerver
 
 server-install: install-reposerver
-	USE_REPO_SERVER=1  $(MAKE) install-repoall
+	REPO_SOURCE=1 $(MAKE) install-repoall
+
+local-install: 
+	REPO_SOURCE=2 $(MAKE) install-repostore install-repoall

@@ -3,29 +3,13 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
-USE_DOCKER=${USE_DOCKER:-"0"}
-
-APP_NAME=nginx
-APP_VERSION=1.26.1
-
-export REPO_ROOT_PATH=${REPO_ROOT_PATH:-"/opt/rpmrepo"}
-
-NGINX_VERSION=1.26.1
-RELEASE=2
-DIST=${DIST:-"el8"}
-ARCH=${ARCH:-"x86_64"}
-
-export SERVER_NAME=${SERVER_NAME:-"localhost"}
+. hack/env.sh
 
 RPMSYNC_MODULE=rpmsync
 RPMSERVER_MODULE=rpmserver
 
 # export GH_TOKEN=${GH_TOKEN:-""}
 # export GH_TOKEN_FILE=${GH_TOKEN_FILE:-".gh_token.txt"}
-
-#export NGCONF_DATADIR=/etc/nginx/conf.d/*.conf
-
-export STOPNG_ONINSTALL=${STOPNG_ONINSTALL:-"0"}
 
 PROJECT_PATH=$(pwd)
 
