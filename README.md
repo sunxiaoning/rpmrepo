@@ -1,70 +1,70 @@
-# rpmrepo
+# RPM Repo
 private rpm repo
 
-## quick install
+## Quick Install
 
-1. install all repo
+1. Install all repo
     
     ```bash
-    # method1: when use official repo source
+    # Method1: When use official repo source
     make install
 
-    # method2: when use private repo source
+    # Method2: When use private repo source
     REPO_SOURCE=1 REPO_SERVER_PROTOCOL=<http/https> REPO_SERVER_NAME=<repo server name> make install
 
-    # method3: when use local repo source
+    # Method3: When use local repo source
     REPO_SOURCE=2 REPO_LOCAL_ROOT_PATH=<repo local root path> make install
     ```
-2. (optional) install repo store, install reposerver && install all repo with local reposerver
+2. (Optional) Install reposerver && install all repo with local reposerver
 
     ```bash
     REPO_SERVER_PROTOCOL=<http/https> REPO_SERVER_NAME=<repo server name> make server-install
     ```
 
-3. (optional) install repo store && install all repo without reposerver
+3. (Optional) Install repo store && install all repo with local store
     
     ```bash
     REPO_LOCAL_ROOT_PATH=<repo local root path> make local-install
     ```
 
-## install app repo
+## Install app repo
 
-1. install galera4 cluster repo
+1. Install galera4 cluster repo
     
     ```bash
-    # method1: when use official repo source
+    # Method1: When use official repo source
     make install-repogalera4
 
-    # method2: when use private repo source
+    # Method2: When use private repo source
     REPO_SOURCE=1 REPO_SERVER_PROTOCOL=<http/https> REPO_SERVER_NAME=<repo server name> make install-repogalera4
 
-    # method3: when use server repo source
+    # Method3: When use server repo source
     REPO_SOURCE=2 REPO_LOCAL_ROOT_PATH=<repo local root path> make install-repogalera4
     ```
 
-2. install nginx repo
+2. Install nginx repo
      ```bash
-    # method1: when use official repo source
+    # Method1: When use official repo source
     make install-reponginx
 
-    # method2: when use private repo source
+    # Method2: When use private repo source
     REPO_SOURCE=1 REPO_SERVER_PROTOCOL=<http/https> REPO_SERVER_NAME=<repo server name> make install-reponginx
 
-    # method3: when use server repo source
+    # Method3: When use server repo source
     REPO_SOURCE=2 REPO_LOCAL_ROOT_PATH=<repo local root path> make install-reponginx
     ```
 
 
-3.  install generic repo
+3.  Install generic repo
     
     ```bash
-    # method1: when use official repo source
+    # Method1: When use official repo source
     APP_NAME=<app_name> APP_VERSION=<app_version> make install-repo
 
-    # method2: when use private repo source
+    # Method2: When use private repo source
     APP_NAME=<app_name> APP_VERSION=<app_version> REPO_SOURCE=1 REPO_SERVER_PROTOCOL=<http/https> REPO_SERVER_NAME=<repo server name> make install-repo
 
-    # method3: when use server repo source
+    # Method3: When use server repo source
     APP_NAME=<app_name> APP_VERSION=<app_version> REPO_SOURCE=2 REPO_LOCAL_ROOT_PATH=<repo local root path> make install-repo
     ```
 
