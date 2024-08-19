@@ -1,5 +1,5 @@
 # RPM Repo
-private rpm repo
+Primarily provides installation functionality for application YUM repositories, and also offers installation functionality for private and local repositories related to YUM.
 
 ## Quick Install
 
