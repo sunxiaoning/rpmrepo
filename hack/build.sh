@@ -26,11 +26,14 @@ export REPO_GPG_CHECK=${REPO_GPG_CHECK:-"1"}
 export REPO_GPG_KEY=${REPO_GPG_KEY:-""}
 export REPO_MODULE_HOTFIXES=${REPO_MODULE_HOTFIXES:-"true"}
 
+SCRIPT_DIR=$(dirname "$(realpath "${BASH_SOURCE}")")
+RENDER_SH_FILE="${SCRIPT_DIR}/../bashutils/render.sh"
+
 build-repo() {
   echo "Build ${APP_NAME}.repo ..."
   set-apprepourl
   mkdir -p repo/${APP_NAME}
-  bashutils/render.sh "repo/repo.repo.tmpl" "repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo"
+  "${RENDER_SH_FILE}" "repo/repo.repo.tmpl" "repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo"
 }
 
 set-apprepourl() {
