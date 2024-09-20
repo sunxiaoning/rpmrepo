@@ -19,10 +19,12 @@ build: build-nginx build-galera4
 install-repo: build-repo
 	./hack/install.sh repo
 
-install-reponginx: build-nginx
+install-reponginx: 
+	$(MAKE) build-nginx
 	./hack/install.sh nginx
 
-install-repogalera4: build-galera4
+install-repogalera4: 
+	$(MAKE) build-galera4
 	./hack/install.sh galera4
 
 install-repoall: install-reponginx install-repogalera4
