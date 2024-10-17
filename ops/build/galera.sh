@@ -5,8 +5,12 @@ set-galera-origin() {
 }
 
 set-mysql-wsrep-origin() {
-  local minor_version=$(echo "${APP_VERSION}" | cut -d '.' -f 3)
-  REPO_ORIGIN_URL="https://releases.galeracluster.com/${APP_NAME}.${minor_version}-${APP_RELEASE}/redhat/\$releasever/\$basearch/"
+  local mysql_wsrep_patch_version=$(echo "${APP_VERSION}" | cut -d '.' -f 3)
+  local galera_version="${MYSQL_WSREP_80_GALERA[${APP_VERSION}]}"
+  local galera_main_version=$(echo "${galera_version}" | cut -d '.' -f 1)
+  local galera_patch_version=$(echo "${galera_version}" | cut -d '.' -f 3)
+
+  REPO_ORIGIN_URL="https://releases.galeracluster.com/${APP_NAME}.${mysql_wsrep_patch_version}-${galera_main_version}.${galera_patch_version}/redhat/\$releasever/\$basearch/"
   REPO_GPG_KEY="https://releases.galeracluster.com/GPG-KEY-galeracluster.com"
 }
 
