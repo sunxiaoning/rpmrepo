@@ -59,5 +59,5 @@ set-apprepourl() {
     exit 1
     ;;
   esac
-  echo "Use APP REPO_URL: ${APP_REPO_URL} ."
+  echo "Use APP REPO_URL: ${APP_REPO_URL}."
 }

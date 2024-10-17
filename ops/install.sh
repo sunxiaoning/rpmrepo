@@ -14,6 +14,11 @@ install-repo() {
   TEMP_FILES+=("${CONTEXT_DIR}/repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo")
 
   install -D -m 644 "${CONTEXT_DIR}/repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo" "/etc/yum.repos.d/${APP_NAME}-${APP_VERSION}.repo"
+
+  echo "Refreshing yum cache..."
+
+  yum clean all >/dev/null
+  yum makecache >/dev/null
 }
 
 install-nginx() {
