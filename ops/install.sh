@@ -21,6 +21,8 @@ install-repo() {
   yum makecache >/dev/null
 }
 
+# TODO uninstall-repo
+
 install-nginx() {
   APP_NAME=nginx
 

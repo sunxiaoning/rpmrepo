@@ -32,9 +32,9 @@ build-repo() {
 
   set-apprepourl
 
-  mkdir -p repo/${APP_NAME}
+  mkdir -p "${CONTEXT_DIR}/repo/${APP_NAME}"
 
-  "${RENDER_SH_FILE}" "repo/repo.repo.tmpl" "${CONTEXT_DIR}/repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo"
+  "${RENDER_SH_FILE}" "${CONTEXT_DIR}/repo/repo.repo.tmpl" "${CONTEXT_DIR}/repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo"
 }
 
 set-apprepourl() {
