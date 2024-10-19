@@ -20,23 +20,6 @@ trap __cleanup EXIT
 
 TEMP_FILES=()
 
-build-all() {
-  build-nginx
-  build-galera4
-}
-
-install-all() {
-  install-nginx
-  install-galera4
-}
-
-server-install() {
-  install-reposerver
-
-  REPO_SOURCE=1
-  install-all
-}
-
 local-install() {
   install-repostore
 
@@ -55,9 +38,6 @@ main() {
   build-galera4)
     build-galera4
     ;;
-  build-all)
-    build-all
-    ;;
   install-repo)
     install-repo
     ;;
@@ -67,17 +47,8 @@ main() {
   install-galera4)
     install-galera4
     ;;
-  install-all)
-    install-all
-    ;;
   install-repostore)
     install-repostore
-    ;;
-  install-reposerver)
-    install-reposerver
-    ;;
-  server-install)
-    server-install
     ;;
   local-install)
     local-install
