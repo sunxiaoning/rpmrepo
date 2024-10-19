@@ -1,7 +1,5 @@
 RPMSYNC_SH_FILE="${CONTEXT_DIR}/rpmsync/rpmsync.sh"
 
-RPMSERVER_SH_FILE="${CONTEXT_DIR}/rpmserver/rpmserver.sh"
-
 export REPO_ORIGIN_SOURCE=${REPO_ORIGIN_SOURCE:-"0"}
 
 . "${OPS_SH_DIR}/install/galera.sh"
@@ -36,6 +34,7 @@ install-nginx() {
   install-repo
 }
 
+# TODO support multi versions ??
 install-galera4() {
   APP_NAME="${GALERA4_APP_NAME}"
 
@@ -56,8 +55,4 @@ install-galera4() {
 
 install-repostore() {
   "${RPMSYNC_SH_FILE}" install-repoall
-}
-
-install-reposerver() {
-  "${RPMSERVER_SH_FILE}" autorun-reposerver
 }

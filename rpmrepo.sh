@@ -20,13 +20,6 @@ trap __cleanup EXIT
 
 TEMP_FILES=()
 
-local-install() {
-  install-repostore
-
-  REPO_SOURCE=2
-  install-all
-}
-
 main() {
   case "${1-}" in
   build-repo)
@@ -49,9 +42,6 @@ main() {
     ;;
   install-repostore)
     install-repostore
-    ;;
-  local-install)
-    local-install
     ;;
   *)
     echo "The operation: ${1-} is not supported!"
