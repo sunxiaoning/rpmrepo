@@ -15,6 +15,8 @@ REPO_SOURCE=${REPO_SOURCE:-"0"}
 
 . "${OPS_SH_DIR}/install.sh"
 
+. "${OPS_SH_DIR}/uninstall.sh"
+
 trap __terminate INT TERM
 trap __cleanup EXIT
 
@@ -40,8 +42,26 @@ main() {
   install-galera4)
     install-galera4
     ;;
+  install-mysql-wsrep8)
+    install-mysql-wsrep8
+    ;;
   install-repostore)
     install-repostore
+    ;;
+  uninstall-repo)
+    uninstall-repo
+    ;;
+  uninstall-nginx)
+    uninstall-nginx
+    ;;
+  uninstall-galera4)
+    uninstall-galera4
+    ;;
+  uninstall-mysql-wsrep8)
+    uninstall-mysql-wsrep8
+    ;;
+  uninstall-repostore)
+    uninstall-repostore
     ;;
   *)
     echo "The operation: ${1-} is not supported!"

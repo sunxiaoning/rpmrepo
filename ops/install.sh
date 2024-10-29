@@ -13,44 +13,7 @@ install-repo() {
 
   install -D -m 644 "${CONTEXT_DIR}/repo/${APP_NAME}/${APP_NAME}-${APP_VERSION}.repo" "/etc/yum.repos.d/${APP_NAME}-${APP_VERSION}.repo"
 
-  echo "Refreshing yum cache..."
-
-  yum clean all >/dev/null
-  yum makecache >/dev/null
-}
-
-# TODO uninstall-repo
-
-install-nginx() {
-  APP_NAME=nginx
-
-  APP_VERSION="${LATEST_NGINX_VERSION}"
-  install-repo
-
-  APP_VERSION="1.24.0"
-  install-repo
-
-  APP_VERSION="1.22.1"
-  install-repo
-}
-
-# TODO support multi versions ??
-install-galera4() {
-  APP_NAME="${GALERA4_APP_NAME}"
-
-  APP_VERSION="${LATEST_GALERA_4_VERSION}"
-  install-repo
-
-  APP_VERSION="26.4.19"
-  install-repo
-
-  APP_NAME="${MYSQL_WSREP_80_APP_NAME}"
-
-  APP_VERSION="${LATEST_MYSQL_WSREP_80_VERSION}"
-  install-repo
-
-  APP_VERSION="8.0.37"
-  install-repo
+  refresh-yumcache
 }
 
 install-repostore() {

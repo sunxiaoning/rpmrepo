@@ -16,3 +16,10 @@ MYSQL_WSREP_80_GALERA["${LATEST_MYSQL_WSREP_80_VERSION}"]="${LATEST_GALERA_4_VER
 MYSQL_WSREP_80_GALERA["8.0.37"]="26.4.19"
 
 APP_VERSION=${APP_VERSION:-${LATEST_NGINX_VERSION}}
+
+refresh-yumcache() {
+  echo "Refreshing yum cache..."
+
+  yum clean all >/dev/null
+  yum makecache >/dev/null
+}
